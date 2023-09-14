@@ -1,0 +1,124 @@
+    public void GunHeat() 
+    {
+        if (gunsTemp > 75 && warnGuns != 3)
+        {
+            StartCoroutine(Annoucement(1));
+            gunsFill.color = Color.red;
+            warnGuns = 3;
+        }
+        else if (gunsTemp > 50 && gunsTemp <= 75 && warnGuns != 2)
+        {
+            if (warnGuns == 1) StartCoroutine(Annoucement(0));
+            gunsFill.color = Color.yellow;
+            warnGuns = 2;
+        }
+        else if (gunsTemp > 25 && gunsTemp <= 50 && warnGuns != 1)
+        {
+            gunsFill.color = Color.green;
+            warnGuns = 1;
+        }
+        else if (gunsTemp <= 25 && warnGuns != 0)
+        {
+            gunsFill.color = Color.green;
+            warnGuns = 0;
+        }
+    }
+
+    IEnumerator Annoucement(int sound)
+    {
+        while (ComputerVoice.isPlaying || gameController.warping == true)
+        {
+            yield return new WaitForSeconds(2);
+        }
+
+        ComputerVoice.clip = announce[sound];
+        ComputerVoice.Play();
+    }
+
+
+    public void ResetSliders()
+    {
+        gunsTemp = 1;
+        gunsBar.value = gunsTemp;
+        gunsFill.color = Color.green;
+    }
+
+
+              if ( !isFiring ) 
+            {
+                gunsCharge.color = Color.gray;
+                gunsCharge.text = "RECHARGE";
+            }
+
+
+if (GameObject.FindGameObjectsWithTag("PlayerFire").Length <= 12) 
+
+
+    IEnumerator RapidFire()
+    {
+        int fireCount = 4;
+        float shotDelay = 1.1f;
+
+        if (warnGuns == 1) fireCount = 3;
+        else if (warnGuns == 2) fireCount = 2;
+        else if (warnGuns == 3) fireCount = 1;
+
+        isFiring = true;
+        gunsCharge.color = Color.yellow;
+        gunsCharge.text = "FIRING";
+        for (int l = 1; l <= fireCount; l++)
+        {
+            Instantiate(shot, C_Shot.position, C_Shot.rotation);
+            yield return new WaitForSeconds(shotDelay);
+        }
+        isFiring = false;
+    }
+
+
+                    //flaming limit to every 10 seconds
+                if (instantiatedPrefab.tag == "Asteroid2" && ( getTimestamp() - lastFlaming ) < 10)
+                {
+                    int hazardSelectRetry = 0;
+                    while (hazardSelectRetry < 10)
+                    {
+                        rndHazard = Random.Range(0, hazardRange);
+                        if (rndHazard != 3) break;
+                        hazardSelectRetry++;
+                    }
+                }
+
+
+// FROM  Game comtroller
+
+           // for (int i = 0; i < hazardCount; i++)
+            // {
+            //     if (gameOver) break;
+
+            //     Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), Random.Range(-spawnValues.z, spawnValues.z));
+
+            //     int rndHazard = 0;
+            //     int hazardRange = hazard.Length;
+
+            //     rndHazard = Random.Range(0, hazardRange);
+
+            //     GameObject instantiatedPrefab = Instantiate(hazard[rndHazard], spawnPosition + enemySpawn.position, enemySpawn.rotation); //spawnRotation
+            //     if (instantiatedPrefab.tag != "Asteroid2") lastFlaming = getTimestamp(); //if still 3 record the timing
+
+            //     //randomly sized asteroids                                  
+            //     if (instantiatedPrefab.tag != "Mine" && instantiatedPrefab.tag != "Asteroid2")
+            //     {
+            //         float rndSizeSetting = Random.Range(1.5f, 4.0f);
+            //         instantiatedPrefab.transform.localScale = new Vector3(rndSizeSetting, rndSizeSetting, rndSizeSetting);
+            //     }
+
+            //     yield return new WaitForSeconds(spawnWait);
+            // }
+
+    // if (instantiatedPrefab.tag != "Asteroid2") lastFlaming = getTimestamp(); //if still 3 record the timing
+
+    // private int getTimestamp()
+    // {
+    //     System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
+    //     int currentEpochTime = (int)(System.DateTime.UtcNow - epochStart).TotalSeconds;
+    //     return currentEpochTime;
+    // }

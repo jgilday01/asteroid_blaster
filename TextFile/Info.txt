@@ -1,0 +1,17 @@
+YOUR MISSION: Clear the Asteroids and Mines
+
+Use the up and down arrows to move
+Use the spacebar for blasting!
+
+Blasters will heat up with use ( offline over 90% )
+Use the blasters sparingly to blast the asteroids and mines
+
+Cleanup Bonus : 50%+ Blast Accuracy with 50%+ Hazards Cleared
+Cleared percentage * 25 points ( e.g. 80% * 25 = 20 points )
+
+Blasting a flaming asteroid causes a blue orb to appear
+The blue orb gives 10 bonus points and resets blaster heat
+
+Warping between waves will cool down the blasters
+
+Warning: Mines will be attracted to the ship!
